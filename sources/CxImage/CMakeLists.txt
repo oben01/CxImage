@@ -1,0 +1,76 @@
+set(CXIMAGE_SOURCES
+    tif_xfile.cpp
+    ximabmp.cpp
+    ximadsp.cpp
+    ximaenc.cpp
+    ximaexif.cpp
+    ximage.cpp
+    ximagif.cpp
+    ximahist.cpp
+    ximaico.cpp
+    ximainfo.cpp
+    ximaint.cpp
+    ximajas.cpp
+    ximajbg.cpp
+    ximajpg.cpp
+    ximalpha.cpp
+    ximalyr.cpp
+    ximamng.cpp
+    ximapal.cpp
+    ximapcx.cpp
+    ximapng.cpp
+    ximaraw.cpp
+    ximasel.cpp
+    ximaska.cpp
+    ximatga.cpp
+    ximath.cpp
+    ximatif.cpp
+    ximatran.cpp
+    ximawbmp.cpp
+    ximawmf.cpp
+    ximawnd.cpp
+    xmemfile.cpp
+)
+
+set(CXIMAGE_HEADERS
+    xfile.h
+    ximabmp.h
+    ximacfg.h
+    ximadef.h
+    ximage.h
+    ximagif.h
+    ximaico.h
+    ximaiter.h
+    ximajas.h
+    ximajbg.h
+    ximajpg.h
+    ximamng.h
+    ximapcx.h
+    ximapng.h
+    ximaraw.h
+    ximaska.h
+    ximatga.h
+    ximath.h
+    ximatif.h
+    ximawbmp.h
+    ximawmf.h
+    xiofile.h
+    xmemfile.h
+)
+
+set(ADDITIONAL_INCLUDE_DIRECTORIES
+    ${CMAKE_SOURCE_DIR}/jpeg
+    ${CMAKE_SOURCE_DIR}/png
+    ${CMAKE_SOURCE_DIR}/zlib
+    ${CMAKE_SOURCE_DIR}/mng
+    ${CMAKE_SOURCE_DIR}/tiff
+    ${CMAKE_SOURCE_DIR}/j2k
+    ${CMAKE_SOURCE_DIR}/jasper/include
+)
+add_library(CxImage STATIC ${CXIMAGE_SOURCES} ${CXIMAGE_HEADERS})
+
+include_directories(${ADDITIONAL_INCLUDE_DIRECTORIES})
+
+if(MSVC)
+    add_definitions(-DJAS_WIN_MSVC_BUILD)
+endif()

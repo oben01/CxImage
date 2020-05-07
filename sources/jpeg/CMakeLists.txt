@@ -1,0 +1,64 @@
+set(JPEG_SOURCES
+    Jcapimin.c
+    Jcapistd.c
+    Jccoefct.c
+    Jccolor.c
+    Jcdctmgr.c
+    Jchuff.c
+    Jcinit.c
+    Jcmainct.c
+    Jcmarker.c
+    Jcmaster.c
+    Jcomapi.c
+    Jcparam.c
+    Jcphuff.c
+    Jcprepct.c
+    Jcsample.c
+    Jctrans.c
+    Jdapimin.c
+    Jdapistd.c
+    Jdatadst.c
+    Jdatasrc.c
+    Jdcoefct.c
+    Jdcolor.c
+    Jddctmgr.c
+    Jdhuff.c
+    Jdinput.c
+    Jdmainct.c
+    Jdmarker.c
+    Jdmaster.c
+    Jdmerge.c
+    Jdphuff.c
+    Jdpostct.c
+    Jdsample.c
+    Jdtrans.c
+    Jerror.c
+    Jfdctflt.c
+    Jfdctfst.c
+    Jfdctint.c
+    Jidctflt.c
+    Jidctfst.c
+    Jidctint.c
+    Jidctred.c
+    Jmemmgr.c
+    Jmemnobs.c
+    Jquant1.c
+    Jquant2.c
+    Jutils.c
+)
+
+set(JPEG_HEADERS
+    Jchuff.h
+    Jconfig.h
+    Jdct.h
+    Jdhuff.h
+    Jerror.h
+    Jinclude.h
+    Jmemsys.h
+    Jmorecfg.h
+    Jpegint.h
+    Jpeglib.h
+    Jversion.h
+)
+
+add_library(jpeg STATIC ${JPEG_SOURCES} ${JPEG_HEADERS})
