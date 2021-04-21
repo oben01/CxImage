@@ -2197,6 +2197,21 @@ png_handle_unknown(png_structp png_ptr, png_infop info_ptr, png_uint_32 length)
    }
 
    png_check_chunk_name(png_ptr, png_ptr->chunk_name);
+   
+   if (png_ptr->chunk_name != png_IDAT)
+   {
+      png_alloc_size_t limit = PNG_SIZE_MAX;
+# ifdef PNG_SET_USER_LIMITS_SUPPORTED
+      if (png_ptr->user_chunk_malloc_max > 0 &&
+          png_ptr->user_chunk_malloc_max < limit)
+         limit = png_ptr->user_chunk_malloc_max;
+# elif PNG_USER_CHUNK_MALLOC_MAX > 0
+      if (PNG_USER_CHUNK_MALLOC_MAX < limit)
+         limit = PNG_USER_CHUNK_MALLOC_MAX;
+# endif
+      if (length > limit)
+         png_chunk_error(png_ptr, "chunk data is too large");
+   }
 
    if (!(png_ptr->chunk_name[0] & 0x20))
    {
